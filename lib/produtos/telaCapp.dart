@@ -9,6 +9,9 @@ class TelaCapp extends StatelessWidget{
         title: Text("Cappuccino"),
         backgroundColor: Colors.brown,
       ),
+      body: _body(),
     );
   }
+
+  _body() {}
 }

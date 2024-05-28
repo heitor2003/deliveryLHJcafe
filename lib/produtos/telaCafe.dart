@@ -11,7 +11,11 @@ class TelaCafe extends StatelessWidget {
         title: Text("Café"),
         backgroundColor: Colors.brown,
       ),
-      body: SuaImagem(caminhoArquivo: '../imagens/cafeEspresso.png',),
+      body: _body(),
     );
+  }
+
+  _body() {
+    return SuaImagem(caminhoArquivo: 'imagens/cafeEspresso.png');
   }
 }

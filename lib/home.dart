@@ -1,4 +1,14 @@
+import 'package:delivery_lhj_cafe/imagens.dart';
+import 'package:delivery_lhj_cafe/produtos/telaCafe.dart';
+import 'package:delivery_lhj_cafe/produtos/telaCafeGelado.dart';
 import 'package:delivery_lhj_cafe/produtos/telaCapp.dart';
+import 'package:delivery_lhj_cafe/produtos/telaChocolate.dart';
+import 'package:delivery_lhj_cafe/produtos/telaCookie.dart';
+import 'package:delivery_lhj_cafe/produtos/telaDonut.dart';
+import 'package:delivery_lhj_cafe/produtos/telaPaoChapa.dart';
+import 'package:delivery_lhj_cafe/produtos/telaPaoQueijo.dart';
+
+import '';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/widgets/botoes.dart';
 class Home extends StatelessWidget {
@@ -9,6 +19,12 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Delivery LHJ cafe"),
+        actions: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: SuaImagem(caminhoArquivo: 'imagens/lhjCafe.png',),
+      ),
+      ],
       ),
       body: _bodyGrid(context),
     );
@@ -22,8 +38,14 @@ class Home extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
 
       children: <Widget>[
-        Buttons( "Teste", onPressed:(){ _abreOutraTela(context, TelaCapp());} ),
-        Buttons( "Teste2", onPressed:() {_abreOutraTela(context, TelaCapp());} )
+        Buttons( "Cappuccino", onPressed:(){ _abreOutraTela(context, TelaCapp());} ),
+        Buttons( "Café Espresso", onPressed:() {_abreOutraTela(context, TelaCafe());} ),
+        Buttons( "Café Gelado", onPressed:() {_abreOutraTela(context, TelaCafeGelado());} ),
+        Buttons( "Chocolate Quente", onPressed:() {_abreOutraTela(context, TelaChocolate());} ),
+        Buttons( "Cookie", onPressed:() {_abreOutraTela(context, TelaCookie());} ),
+        Buttons( "Donut", onPressed:() {_abreOutraTela(context, TelaDonut());} ),
+        Buttons( "Pão na Chapa", onPressed:() {_abreOutraTela(context, TelaPaoChapa());} ),
+        Buttons( "Pão de Queijo", onPressed:() {_abreOutraTela(context, TelaPaoQueijo());} )
       ],
     );
   }

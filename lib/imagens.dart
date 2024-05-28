@@ -13,7 +13,7 @@ class _SuaImagemState extends State<SuaImagem> {
     return Image.asset(
         widget.caminhoArquivo,
         fit: BoxFit.cover,
-        scale: 50,
+        scale: 1,
     );
   }
 }

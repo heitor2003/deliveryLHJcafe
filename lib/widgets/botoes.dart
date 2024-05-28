@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 class Buttons extends StatelessWidget {
   String texto;
@@ -11,6 +14,10 @@ class Buttons extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: onPressed,
-        child: Text(this.texto));
+        child: Textos(this.texto, Colors.white),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.brown),
+        ),
+    );
   }
 }
