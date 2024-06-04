@@ -1,3 +1,4 @@
+import 'package:delivery_lhj_cafe/widgets/quantidadeButton.dart';
 import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/imagens.dart';
@@ -9,7 +10,7 @@ class TelaChocolate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Textos("Chocolate", Colors.black),
+        title: Textos("Chocolate Quente", Colors.black),
         backgroundColor: Colors.brown,
       ),
       body: _body(),
@@ -17,8 +18,16 @@ class TelaChocolate extends StatelessWidget {
   }
 
   _body() {
-    return Scaffold(
-      body: SuaImagem(caminhoArquivo: 'imagens/chocolate.png'),
+    return Container(
+      child: Column(
+        children: [
+          SuaImagem(caminhoArquivo: "imagens/chocolate.png"),
+          Text("Chocolate quente cremoso tipo europeu"),
+          QuantidadeButton(
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');})
+        ],
+      ),
     );
   }
 }

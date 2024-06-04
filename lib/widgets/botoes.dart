@@ -13,11 +13,20 @@ class Buttons extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: onPressed,
-        child: Textos(this.texto, Colors.white),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.brown),
-        ),
-    );
+              onPressed: onPressed,
+              child: Textos(this.texto, Colors.white),
+              style: ButtonStyle(
+                  minimumSize: MaterialStateProperty.all<Size>(Size(150, 100)),
+                  backgroundColor: MaterialStateProperty.all(Colors.brown),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.brown)
+                      )
+                  )
+              ),
+          );
+
+
   }
 }

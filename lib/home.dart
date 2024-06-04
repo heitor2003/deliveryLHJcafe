@@ -17,6 +17,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text("Delivery LHJ cafe"),
         actions: [
@@ -26,28 +27,56 @@ class Home extends StatelessWidget {
       ),
       ],
       ),
-      body: _bodyGrid(context),
+      body: _bodyCol(context),
     );
 
   }
 
-  _bodyGrid(BuildContext context) {
-    return GridView(
-      scrollDirection: Axis.vertical,
-
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-
-      children: <Widget>[
-        Buttons( "Cappuccino", onPressed:(){ _abreOutraTela(context, TelaCapp());} ),
-        Buttons( "Café Espresso", onPressed:() {_abreOutraTela(context, TelaCafe());} ),
-        Buttons( "Café Gelado", onPressed:() {_abreOutraTela(context, TelaCafeGelado());} ),
-        Buttons( "Chocolate Quente", onPressed:() {_abreOutraTela(context, TelaChocolate());} ),
-        Buttons( "Cookie", onPressed:() {_abreOutraTela(context, TelaCookie());} ),
-        Buttons( "Donut", onPressed:() {_abreOutraTela(context, TelaDonut());} ),
-        Buttons( "Pão na Chapa", onPressed:() {_abreOutraTela(context, TelaPaoChapa());} ),
-        Buttons( "Pão de Queijo", onPressed:() {_abreOutraTela(context, TelaPaoQueijo());} )
-      ],
+  _bodyCol(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Buttons( "Cappuccino", onPressed:(){ _abreOutraTela(context, TelaCapp());} ),
+              Buttons( "Café Espresso", onPressed:() {_abreOutraTela(context, TelaCafe());} ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Buttons( "Café Gelado", onPressed:() {_abreOutraTela(context, TelaCafeGelado());} ),
+              Buttons( "Chocolate Quente", onPressed:() {_abreOutraTela(context, TelaChocolate());} ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Buttons( "Cookie", onPressed:() {_abreOutraTela(context, TelaCookie());} ),
+              Buttons( "Donut", onPressed:() {_abreOutraTela(context, TelaDonut());} ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Buttons( "Pão na Chapa", onPressed:() {_abreOutraTela(context, TelaPaoChapa());} ),
+              Buttons( "Pão de Queijo", onPressed:() {_abreOutraTela(context, TelaPaoQueijo());} )
+            ],
+          )
+        ],
+      ),
     );
+        /*
+
+
+        */
   }
 
   _abreOutraTela(ctx, page) {

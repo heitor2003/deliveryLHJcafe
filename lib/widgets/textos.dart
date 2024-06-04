@@ -11,7 +11,7 @@ class Textos extends StatelessWidget {
       this.meuTexto, //parametro do construtor
       style: TextStyle( //texto estilizado
           color: this.color, //segundo parametro indicando a cor do texto
-          fontSize: 24
+          fontSize: 14
       ),
     );
 
