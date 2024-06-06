@@ -1,3 +1,4 @@
+import 'package:delivery_lhj_cafe/cart.dart';
 import 'package:delivery_lhj_cafe/imagens.dart';
 import 'package:delivery_lhj_cafe/produtos/telaCafe.dart';
 import 'package:delivery_lhj_cafe/produtos/telaCafeGelado.dart';
@@ -21,10 +22,20 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Delivery LHJ cafe"),
         actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: SuaImagem(caminhoArquivo: 'imagens/lhjCafe.png',),
       ),
+
       ],
       ),
       body: _bodyCol(context),
@@ -35,7 +46,7 @@ class Home extends StatelessWidget {
   _bodyCol(BuildContext context) {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           Row(

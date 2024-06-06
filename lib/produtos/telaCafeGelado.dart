@@ -1,10 +1,20 @@
+import 'package:delivery_lhj_cafe/cart.dart';
+import 'package:delivery_lhj_cafe/widgets/addButton.dart';
 import 'package:delivery_lhj_cafe/widgets/quantidadeButton.dart';
 import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/imagens.dart';
 
-class TelaCafeGelado extends StatelessWidget {
+class TelaCafeGelado extends StatefulWidget {
   const TelaCafeGelado({super.key});
+
+  @override
+  State<TelaCafeGelado> createState() => _TelaCafeGeladoState();
+}
+
+class _TelaCafeGeladoState extends State<TelaCafeGelado> {
+  int _quantidade = 1;
+  String _nome = "Café Gelado";
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +22,17 @@ class TelaCafeGelado extends StatelessWidget {
       appBar: AppBar(
         title: Textos("Café Gelado", Colors.black),
         backgroundColor: Colors.brown,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: _body(),
     );
@@ -24,8 +45,14 @@ class TelaCafeGelado extends StatelessWidget {
           SuaImagem(caminhoArquivo: "imagens/cafeGelado.png"),
           Text("Café coado gelado"),
           QuantidadeButton(
-              quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');})
+            quantidadeInicial: 1,
+            onQuantidadeAtualizada: (novaQuantidade) {
+              setState(() {
+                _quantidade = novaQuantidade;
+              });
+            },
+          ),
+          AddButton(nome: _nome, quantidade: _quantidade),
         ],
       ),
     );

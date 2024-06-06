@@ -1,10 +1,20 @@
+import 'package:delivery_lhj_cafe/cart.dart';
+import 'package:delivery_lhj_cafe/widgets/addButton.dart';
 import 'package:delivery_lhj_cafe/widgets/quantidadeButton.dart';
 import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/imagens.dart';
 
-class TelaPaoQueijo extends StatelessWidget {
+class TelaPaoQueijo extends StatefulWidget {
   const TelaPaoQueijo({super.key});
+
+  @override
+  State<TelaPaoQueijo> createState() => _TelaPaoQueijoState();
+}
+
+class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
+  int _quantidade = 1;
+  String _nome = "Pão de Queijo";
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +22,17 @@ class TelaPaoQueijo extends StatelessWidget {
       appBar: AppBar(
         title: Textos("Pão de Queijo", Colors.black),
         backgroundColor: Colors.brown,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: _body(),
     );
@@ -24,10 +45,17 @@ class TelaPaoQueijo extends StatelessWidget {
           SuaImagem(caminhoArquivo: "imagens/paoQueijo.png"),
           Text("Pão de queijo de qualidade premium, 80g"),
           QuantidadeButton(
-              quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');})
+            quantidadeInicial: 1,
+            onQuantidadeAtualizada: (novaQuantidade) {
+              setState(() {
+                _quantidade = novaQuantidade;
+              });
+            },
+          ),
+          AddButton(nome: _nome, quantidade: _quantidade),
         ],
       ),
     );
   }
 }
+

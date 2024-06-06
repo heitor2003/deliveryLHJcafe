@@ -1,9 +1,20 @@
+import 'package:delivery_lhj_cafe/cart.dart';
+import 'package:delivery_lhj_cafe/widgets/addButton.dart';
 import 'package:delivery_lhj_cafe/widgets/quantidadeButton.dart';
 import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/imagens.dart';
-class TelaDonut extends StatelessWidget {
+
+class TelaDonut extends StatefulWidget {
   const TelaDonut({super.key});
+
+  @override
+  State<TelaDonut> createState() => _TelaDonutState();
+}
+
+class _TelaDonutState extends State<TelaDonut> {
+  int _quantidade = 1;
+  String _nome = "Donut";
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +22,17 @@ class TelaDonut extends StatelessWidget {
       appBar: AppBar(
         title: Textos("Café", Colors.black),
         backgroundColor: Colors.brown,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: _body(),
     );
@@ -23,8 +45,14 @@ class TelaDonut extends StatelessWidget {
           SuaImagem(caminhoArquivo: "imagens/Donut.png"),
           Text("Donut recheado com creme bavariano"),
           QuantidadeButton(
-              quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');})
+            quantidadeInicial: 1,
+            onQuantidadeAtualizada: (novaQuantidade) {
+              setState(() {
+                _quantidade = novaQuantidade;
+              });
+            },
+          ),
+          AddButton(nome: _nome, quantidade: _quantidade),
         ],
       ),
     );

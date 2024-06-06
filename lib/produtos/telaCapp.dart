@@ -1,9 +1,20 @@
+import 'package:delivery_lhj_cafe/cart.dart';
+import 'package:delivery_lhj_cafe/widgets/addButton.dart';
 import 'package:delivery_lhj_cafe/widgets/imagens.dart';
 import 'package:delivery_lhj_cafe/widgets/quantidadeButton.dart';
 import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 
-class TelaCapp extends StatelessWidget{
+class TelaCapp extends StatefulWidget {
+  const TelaCapp({super.key});
+
+  @override
+  State<TelaCapp> createState() => _TelaCappState();
+}
+
+class _TelaCappState extends State<TelaCapp> {
+  int _quantidade = 1;
+  String _nome = "Cappuccino";
 
   @override
   Widget build(BuildContext context){
@@ -11,6 +22,17 @@ class TelaCapp extends StatelessWidget{
       appBar: AppBar(
         title: Textos("Cappuccino", Colors.black),
         backgroundColor: Colors.brown,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: _body(),
     );
@@ -24,7 +46,13 @@ class TelaCapp extends StatelessWidget{
           Text("Leite com café, canela e chocolate"),
           QuantidadeButton(
               quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');})
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+          ),
+          AddButton(nome: _nome, quantidade: _quantidade),
         ],
       ),
     );
