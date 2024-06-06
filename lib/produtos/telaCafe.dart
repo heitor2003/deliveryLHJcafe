@@ -15,6 +15,7 @@ class TelaCafe extends StatefulWidget {
 class _TelaCafeState extends State<TelaCafe> {
   int _quantidade = 1;
   String _nome = "Café Espresso";
+  double _preco = 7.00;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _TelaCafeState extends State<TelaCafe> {
       child: Column(
         children: [
           SuaImagem(caminhoArquivo: "imagens/cafeEspresso.png"),
-          Text("Café espresso especial"),
+          Text("Café espresso especial \nR\$ $_preco"),
           QuantidadeButton(
             quantidadeInicial: 1,
             onQuantidadeAtualizada: (novaQuantidade) {
@@ -52,7 +53,7 @@ class _TelaCafeState extends State<TelaCafe> {
               });
             },
           ),
-          AddButton(nome: _nome, quantidade: _quantidade),
+          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
         ],
       ),
     );

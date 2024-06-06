@@ -15,6 +15,7 @@ class TelaPaoChapa extends StatefulWidget {
 class _TelaPaoChapaState extends State<TelaPaoChapa> {
   int _quantidade = 1;
   String _nome = "Pão na Chapa";
+  double _preco = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _TelaPaoChapaState extends State<TelaPaoChapa> {
       child: Column(
         children: [
           SuaImagem(caminhoArquivo: "imagens/Pao-na-Chapa.png"),
-          Text("Pão francês torrado na chapa com manteiga"),
+          Text("Pão francês torrado na chapa com manteiga \n R\$ $_preco"),
           QuantidadeButton(
             quantidadeInicial: 1,
             onQuantidadeAtualizada: (novaQuantidade) {
@@ -52,7 +53,7 @@ class _TelaPaoChapaState extends State<TelaPaoChapa> {
               });
             },
           ),
-          AddButton(nome: _nome, quantidade: _quantidade),
+          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
         ],
       ),
     );

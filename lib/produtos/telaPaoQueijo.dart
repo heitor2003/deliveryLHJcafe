@@ -15,6 +15,7 @@ class TelaPaoQueijo extends StatefulWidget {
 class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
   int _quantidade = 1;
   String _nome = "Pão de Queijo";
+  double _preco = 7;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
       child: Column(
         children: [
           SuaImagem(caminhoArquivo: "imagens/paoQueijo.png"),
-          Text("Pão de queijo de qualidade premium, 80g"),
+          Text("Pão de queijo de qualidade premium, 80g \n R\$ $_preco"),
           QuantidadeButton(
             quantidadeInicial: 1,
             onQuantidadeAtualizada: (novaQuantidade) {
@@ -52,7 +53,7 @@ class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
               });
             },
           ),
-          AddButton(nome: _nome, quantidade: _quantidade),
+          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
         ],
       ),
     );

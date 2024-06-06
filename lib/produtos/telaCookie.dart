@@ -15,6 +15,7 @@ class TelaCookie extends StatefulWidget {
 class _TelaCookieState extends State<TelaCookie> {
   int _quantidade = 1;
   String _nome = "Cookie";
+  double _preco = 13;
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +44,11 @@ class _TelaCookieState extends State<TelaCookie> {
       child: Column(
         children: [
           SuaImagem(caminhoArquivo: "imagens/cAoleite.png"),
-          Text("Massa de baunilha com gotas de chocolate ao leite"),
+          Text("Massa de baunilha com gotas de chocolate ao leite \nR\$ $_preco"),
           QuantidadeButton(
               quantidadeInicial: 1,
               onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');}),
-          AddButton(nome: _nome, quantidade: _quantidade),
+          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
         ],
       ),
     );

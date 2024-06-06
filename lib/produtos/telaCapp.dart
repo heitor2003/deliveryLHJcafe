@@ -15,6 +15,7 @@ class TelaCapp extends StatefulWidget {
 class _TelaCappState extends State<TelaCapp> {
   int _quantidade = 1;
   String _nome = "Cappuccino";
+  double _preco = 12.90;
 
   @override
   Widget build(BuildContext context){
@@ -43,7 +44,7 @@ class _TelaCappState extends State<TelaCapp> {
       child: Column(
         children: [
           SuaImagem(caminhoArquivo: "imagens/Capp.png"),
-          Text("Leite com café, canela e chocolate"),
+          Text("Leite com café, canela e chocolate \nR\$ $_preco"),
           QuantidadeButton(
               quantidadeInicial: 1,
               onQuantidadeAtualizada: (novaQuantidade) {
@@ -52,7 +53,7 @@ class _TelaCappState extends State<TelaCapp> {
                 });
               },
           ),
-          AddButton(nome: _nome, quantidade: _quantidade),
+          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
         ],
       ),
     );
