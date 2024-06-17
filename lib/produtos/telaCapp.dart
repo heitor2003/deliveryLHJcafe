@@ -40,22 +40,24 @@ class _TelaCappState extends State<TelaCapp> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/Capp.png"),
-          Text("Leite com café, canela e chocolate \nR\$ $_preco"),
-          QuantidadeButton(
-              quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {
-                setState(() {
-                  _quantidade = novaQuantidade;
-                });
-              },
+    return SingleChildScrollView(
+        child:  Container(
+          child: Column(
+            children: [
+              SuaImagem(caminhoArquivo: "imagens/Capp.png"),
+              Text("Leite com café, canela e chocolate \nR\$ $_preco"),
+              QuantidadeButton(
+                  quantidadeInicial: 1,
+                  onQuantidadeAtualizada: (novaQuantidade) {
+                    setState(() {
+                      _quantidade = novaQuantidade;
+                    });
+                  },
+              ),
+              AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            ],
           ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+      )
     );
   }
 }

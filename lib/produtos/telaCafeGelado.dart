@@ -40,21 +40,23 @@ class _TelaCafeGeladoState extends State<TelaCafeGelado> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/cafeGelado.png"),
-          Text("Café coado gelado \nR\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
-          ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            SuaImagem(caminhoArquivo: "imagens/cafeGelado.png"),
+            Text("Café coado gelado \nR\$ $_preco"),
+            QuantidadeButton(
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+            ),
+            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+          ],
+        ),
       ),
     );
   }

@@ -40,22 +40,24 @@ class _TelaPaoChapaState extends State<TelaPaoChapa> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/Pao-na-Chapa.png"),
-          Text("Pão francês torrado na chapa com manteiga \n R\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
+    return SingleChildScrollView(
+       child: Container(
+          child: Column(
+            children: [
+              SuaImagem(caminhoArquivo: "imagens/Pao-na-Chapa.png"),
+              Text("Pão francês torrado na chapa com manteiga \n R\$ $_preco"),
+              QuantidadeButton(
+                quantidadeInicial: 1,
+                onQuantidadeAtualizada: (novaQuantidade) {
+                  setState(() {
+                    _quantidade = novaQuantidade;
+                  });
+                },
+              ),
+              AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            ],
           ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+       )
     );
   }
 }

@@ -40,22 +40,24 @@ class _TelaDonutState extends State<TelaDonut> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/Donut.png"),
-          Text("Donut recheado com creme bavariano \nR\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
-          ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            SuaImagem(caminhoArquivo: "imagens/Donut.png"),
+            Text("Donut recheado com creme bavariano \nR\$ $_preco"),
+            QuantidadeButton(
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+            ),
+            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+          ],
+        ),
+      )
     );
   }
 }

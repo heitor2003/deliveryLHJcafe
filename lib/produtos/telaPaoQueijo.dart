@@ -40,22 +40,24 @@ class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/paoQueijo.png"),
-          Text("Pão de queijo de qualidade premium, 80g \n R\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
-          ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            SuaImagem(caminhoArquivo: "imagens/paoQueijo.png"),
+            Text("Pão de queijo de qualidade premium, 80g \n R\$ $_preco"),
+            QuantidadeButton(
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+            ),
+            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+          ],
+        ),
+      )
     );
   }
 }

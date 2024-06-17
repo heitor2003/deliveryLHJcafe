@@ -1,15 +1,9 @@
-import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/cart.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class FinalizarPage extends StatefulWidget {
-  @override
-  _FinalizarPageState createState() => _FinalizarPageState();
-}
-
-class _FinalizarPageState extends State<FinalizarPage> {
-  String _formaPagamento = 'Dinheiro';
-
+class FinalizarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> items = Cart.getItems();
@@ -52,37 +46,22 @@ class _FinalizarPageState extends State<FinalizarPage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: DropdownButtonFormField<String>(
-                value: _formaPagamento,
-                items: ['Dinheiro', 'Crédito', 'Débito', 'Pix'].map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (newValue) {
-                  setState(() {
-                    _formaPagamento = newValue!;
-                  });
-                },
-                decoration: InputDecoration(
-                  labelText: 'Forma de Pagamento',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
             ElevatedButton(
-              onPressed: () {
-                // Aqui você pode adicionar a lógica para finalizar a compra, como salvar no banco de dados, etc.
-                Cart.clearCart();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Compra finalizada com sucesso! Forma de pagamento: $_formaPagamento')),
-                );
-                Navigator.pop(context);
+              onPressed: () async {
+                try {
+                  await finalizarCompra(items, totalValue);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Compra finalizada com sucesso!')),
+                  );
+                  Cart.clearCart();
+                  Navigator.pop(context);
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Erro ao finalizar compra: $e')),
+                  );
+                }
               },
-              child: Textos('Confirmar Compra', Colors.white),
+              child: Text('Confirmar Compra'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
               ),
@@ -91,5 +70,28 @@ class _FinalizarPageState extends State<FinalizarPage> {
         ),
       ),
     );
+  }
+
+  Future<void> finalizarCompra(List<Map<String, dynamic>> items, double totalValue) async {
+    final url = Uri.parse('http://localhost/lhj_cafe_backend/api/finalizar_pedido.php');
+    print('Enviando requisição para $url');
+
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'items': items,
+        'total_value': totalValue,
+      }),
+    );
+
+    print('Resposta recebida: ${response.statusCode}');
+    print('Corpo da resposta: ${response.body}');
+
+    if (response.statusCode != 200) {
+      throw Exception('Erro ao finalizar compra: ${response.reasonPhrase}');
+    }
   }
 }

@@ -40,17 +40,20 @@ class _TelaCookieState extends State<TelaCookie> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/cAoleite.png"),
-          Text("Massa de baunilha com gotas de chocolate ao leite \nR\$ $_preco"),
-          QuantidadeButton(
-              quantidadeInicial: 1,
-              onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');}),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+    return SingleChildScrollView(
+        child:
+        Container(
+          child: Column(
+          children: [
+            SuaImagem(caminhoArquivo: "imagens/cAoleite.png"),
+            Text("Massa de baunilha com gotas de chocolate ao leite \nR\$ $_preco"),
+            QuantidadeButton(
+                quantidadeInicial: 1,
+                onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');}),
+            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+          ],
+        ),
+      )
     );
   }
 }

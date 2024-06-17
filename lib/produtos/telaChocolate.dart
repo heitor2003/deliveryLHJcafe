@@ -40,22 +40,25 @@ class _TelaChocolateState extends State<TelaChocolate> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/chocolate.png"),
-          Text("Chocolate quente cremoso tipo europeu \nR\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
-          ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+    return SingleChildScrollView(
+      child:
+        Container(
+        child: Column(
+          children: [
+            SuaImagem(caminhoArquivo: "imagens/chocolate.png"),
+            Text("Chocolate quente cremoso tipo europeu \nR\$ $_preco"),
+            QuantidadeButton(
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+            ),
+            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+          ],
+        ),
+      )
     );
   }
 }

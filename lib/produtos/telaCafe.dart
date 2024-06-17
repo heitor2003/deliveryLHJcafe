@@ -40,22 +40,24 @@ class _TelaCafeState extends State<TelaCafe> {
   }
 
   _body() {
-    return Container(
-      child: Column(
-        children: [
-          SuaImagem(caminhoArquivo: "imagens/cafeEspresso.png"),
-          Text("Café espresso especial \nR\$ $_preco"),
-          QuantidadeButton(
-            quantidadeInicial: 1,
-            onQuantidadeAtualizada: (novaQuantidade) {
-              setState(() {
-                _quantidade = novaQuantidade;
-              });
-            },
-          ),
-          AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
-        ],
-      ),
+    return SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              SuaImagem(caminhoArquivo: "imagens/cafeEspresso.png"),
+              Text("Café espresso especial \nR\$ $_preco"),
+              QuantidadeButton(
+                quantidadeInicial: 1,
+                onQuantidadeAtualizada: (novaQuantidade) {
+                  setState(() {
+                    _quantidade = novaQuantidade;
+                  });
+                },
+              ),
+              AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            ],
+        ),
+      )
     );
   }
 }
