@@ -21,7 +21,7 @@ class _TelaCafeState extends State<TelaCafe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Textos("Café Espresso", Colors.black),
+        title: Textos(_nome, Colors.black),
         backgroundColor: Colors.brown,
         actions: [
           IconButton(

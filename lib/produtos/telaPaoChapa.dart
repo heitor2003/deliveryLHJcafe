@@ -21,7 +21,7 @@ class _TelaPaoChapaState extends State<TelaPaoChapa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Textos("Pão Na Chapa", Colors.black),
+        title: Textos(_nome, Colors.black),
         backgroundColor: Colors.brown,
         actions: [
           IconButton(

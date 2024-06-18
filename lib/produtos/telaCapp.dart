@@ -21,7 +21,7 @@ class _TelaCappState extends State<TelaCapp> {
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Textos("Cappuccino", Colors.black),
+        title: Textos(_nome, Colors.black),
         backgroundColor: Colors.brown,
         actions: [
           IconButton(

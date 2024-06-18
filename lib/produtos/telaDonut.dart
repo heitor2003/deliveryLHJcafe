@@ -21,7 +21,7 @@ class _TelaDonutState extends State<TelaDonut> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Textos("Café", Colors.black),
+        title: Textos(_nome, Colors.black),
         backgroundColor: Colors.brown,
         actions: [
           IconButton(
