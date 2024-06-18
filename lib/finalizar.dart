@@ -1,3 +1,4 @@
+import 'package:delivery_lhj_cafe/widgets/textos.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_lhj_cafe/cart.dart';
 import 'package:http/http.dart' as http;
@@ -35,14 +36,8 @@ class FinalizarPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Total:',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'R\$ $totalValue',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                  Text('Total:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text('R\$ $totalValue',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
@@ -61,7 +56,7 @@ class FinalizarPage extends StatelessWidget {
                   );
                 }
               },
-              child: Text('Confirmar Compra'),
+              child: Textos('Confirmar Compra', Colors.white),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
               ),
