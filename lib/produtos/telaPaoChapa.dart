@@ -54,7 +54,7 @@ class _TelaPaoChapaState extends State<TelaPaoChapa> {
                   });
                 },
               ),
-              AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+              AddButton(id: 7, nome: _nome, quantidade: _quantidade, preco: _preco),
             ],
           ),
        )

@@ -73,7 +73,7 @@ class FinalizarPage extends StatelessWidget {
   }
 
   Future<void> finalizarCompra(List<Map<String, dynamic>> items, double totalValue) async {
-    final url = Uri.parse('http://localhost/lhj_cafe_backend/api/finalizar_pedido.php');
+    final url = Uri.parse('http://10.131.254.139/lhj_cafe_backend/api/finalizar_pedido.php');
     print('Enviando requisição para $url');
 
     final response = await http.post(

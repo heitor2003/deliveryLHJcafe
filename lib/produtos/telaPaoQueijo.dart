@@ -54,7 +54,7 @@ class _TelaPaoQueijoState extends State<TelaPaoQueijo> {
                 });
               },
             ),
-            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            AddButton(id: 8, nome: _nome, quantidade: _quantidade, preco: _preco),
           ],
         ),
       )

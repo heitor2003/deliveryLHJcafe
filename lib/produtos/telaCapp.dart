@@ -54,7 +54,7 @@ class _TelaCappState extends State<TelaCapp> {
                     });
                   },
               ),
-              AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+              AddButton(id: 3, nome: _nome, quantidade: _quantidade, preco: _preco),
             ],
           ),
       )

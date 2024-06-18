@@ -54,7 +54,7 @@ class _TelaCafeGeladoState extends State<TelaCafeGelado> {
                 });
               },
             ),
-            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            AddButton(id: 2, nome: _nome, quantidade: _quantidade, preco: _preco),
           ],
         ),
       ),

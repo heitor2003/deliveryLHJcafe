@@ -55,7 +55,7 @@ class _TelaChocolateState extends State<TelaChocolate> {
                 });
               },
             ),
-            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            AddButton(id: 4, nome: _nome, quantidade: _quantidade, preco: _preco),
           ],
         ),
       )

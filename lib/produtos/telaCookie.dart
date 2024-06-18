@@ -48,9 +48,14 @@ class _TelaCookieState extends State<TelaCookie> {
             SuaImagem(caminhoArquivo: "imagens/cAoleite.png"),
             Text("Massa de baunilha com gotas de chocolate ao leite \nR\$ $_preco"),
             QuantidadeButton(
-                quantidadeInicial: 1,
-                onQuantidadeAtualizada: (novaQuantidade) {print('Nova quantidade: $novaQuantidade');}),
-            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+              quantidadeInicial: 1,
+              onQuantidadeAtualizada: (novaQuantidade) {
+                setState(() {
+                  _quantidade = novaQuantidade;
+                });
+              },
+            ),
+            AddButton(id: 5, nome: _nome, quantidade: _quantidade, preco: _preco),
           ],
         ),
       )

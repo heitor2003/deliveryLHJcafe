@@ -54,7 +54,7 @@ class _TelaDonutState extends State<TelaDonut> {
                 });
               },
             ),
-            AddButton(nome: _nome, quantidade: _quantidade, preco: _preco),
+            AddButton(id: 6, nome: _nome, quantidade: _quantidade, preco: _preco),
           ],
         ),
       )
